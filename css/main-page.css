@@ -1,8 +1,105 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap");
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.background {
+  background-image: url("../images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.container__nav {
+  background-color: #fff;
+  height: 70px;
+  width: 100%;
+}
+.container__logo {
+  float: right;
+  display: flex;
+  height: 100%;
+}
+.container__logo h1 {
+  color: #1aebb7;
+  line-height: 50px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.container__logo .fa-laptop-code {
+  margin: auto;
+  margin-right: 35px;
+  margin-left: 5px;
+  color: #1aebb7;
+  font-size: 40px;
+}
+.container__grid {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 80px;
+  margin-top: 10%;
+}
+.container__btn {
+  align-self: center;
+  height: 330px;
+  width: 520px;
+  background-color: #fff;
+  box-shadow: -8px 8px 20px 0px rgba(26, 235, 183, 0.5);
+  border: 1px solid rgba(26, 235, 183, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1aebb7;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+.container__btn .fas {
+  margin-top: 12%;
+  font-size: 8em;
+}
+.container__btn h2 {
+  margin-top: 10px;
+}
+.container__btn p {
+  font-style: italic;
+}
+.container__btn:hover {
+  transform: translate(20px, -20px);
+  transition: transform 0.2s ease-in-out;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #1aebb7;
+  height: 100px;
+  color: #fff;
+  text-align: left;
+}
+footer .contact p {
+  border: none;
 }
 
 /*# sourceMappingURL=main-page.css.map */

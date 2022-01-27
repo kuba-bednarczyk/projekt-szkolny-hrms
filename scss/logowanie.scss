@@ -2,10 +2,50 @@
 @import './variables';
 @import './mixins';
 
-body{
+.container{
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 100vh;
+    width: 100vw;
+
     display: flex;
     justify-content: center;
-    background-color: $white;
+}
+
+.go-back{
+    // border: 2px solid red;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 20px -10px rgba(2, 2, 3, 0.7);
+
+    text-decoration: none;
+    background-color: $cyan-green;
+    color: $white;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+
+    .fa-arrow-left{
+        margin: 0 10px;
+    }
+
+    span{
+        line-height: 30px;
+    }
+
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        opacity: 0.7;
+        transition: all .2s ease-in-out;
+    }
 }
 
 .login{
@@ -112,3 +152,4 @@ body{
     text-align: center;
     margin: 0 auto;
 }
+
