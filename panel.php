@@ -1,8 +1,6 @@
-<!-- strona główna - wybór dla pracownika i dla klienta -->
-
 <?php
     session_start();
-    if ($_SESSION['zalogowany'] != 1){
+    if ($_SESSION['login'] == null){
         header("Location: logowanie.php");
     }
 
@@ -17,6 +15,9 @@
 </head>
 <body>
     <h1>Witaj!</h1>
-    <a href="./logowanie.php">Wyloguj się</a>
+    <a href="./wyloguj.php">Wyloguj się</a>
+    <?php
+        echo $_SESSION['login'];
+    ?>
 </body>
 </html>

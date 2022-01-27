@@ -28,22 +28,23 @@
 <?php
     if(isset($_POST['submit'])){
 
-        $login = $_POST['login'];
-        $haslo = $_POST['haslo'];
+        $dbConnect = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
-        if(empty($login) || empty($haslo)){
-            echo "<span class='error'>Musisz podać login i hasło</span>";
-            return;
+        $login = mysqli_real_escape_string($dbConnect, $_POST['login']);
+        $passwd = mysqli_real_escape_string($dbConnect, $_POST['haslo']);
+        $passwd = sha1($passwd);
+
+        $sql= "SELECT * FROM uzytkownicy WHERE login = '$login' AND haslo = '$passwd'";
+        $query = mysqli_query($dbConnect, $sql);
+
+        if(mysqli_num_rows($query)>0){
+            $_SESSION['login'] = $login;
+            header('Location: panel.php');
         } else {
-            if ($login == "admin" && $haslo == "admin"){
-                echo "Zalogowany";
-                $_SESSION['zalogowany'] = 1;
-                header("Location:main.php");
-            } else {
-                echo "<span class='error'>Błędny login lub hasło</span>";
-                return;
-            }
+            echo "<span class='error'>Błąd logowania</span>";
         }
+
+        mysqli_close($dbConnect);
     }
 ?>
                 </div>
@@ -53,3 +54,4 @@
 
 </body>
 </html>
+
