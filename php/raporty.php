@@ -47,9 +47,7 @@ session_start();
         <?php
             $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
             $sql1 = "SELECT * FROM klienci";
-            // $sql2 = ""
             $query = mysqli_query($db, $sql1);
-
 
             while($row = mysqli_fetch_array($query)){
                 echo "<tr>";
