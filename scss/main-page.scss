@@ -22,6 +22,7 @@ body{
 
 
     &__nav{
+        position: fixed;
         background-color: $white;
         height: 70px;
         width: 100%;
@@ -58,7 +59,7 @@ body{
         grid-gap: 80px;
         // border: 2px solid red;
 
-        margin-top: 10%;
+        margin-top: 15%;
     }
 
     &__btn{

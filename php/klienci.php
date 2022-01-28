@@ -10,14 +10,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Pracownika</title>
+    <title>Klienci</title>
 </head>
 <body>
-    <h1>To jest panel pracownika</h1><br>
-    <a href="./klienci.php">Klienci</a><br>
-    <a href="./raporty.php">Raporty</a><br><br>
 
-    <a href="./panel.php">Powrót</a><br>
-    <a href="./wyloguj.php">Wyloguj się</a>
+<a href="./panel.php">Powrót</a><br>
+<a href="./wyloguj.php">Wyloguj się</a>
 </body>
 </html>
