@@ -17,7 +17,6 @@
     <a href="./klienci.php">Klienci</a><br>
     <a href="./raporty.php">Raporty</a><br><br>
 
-    <a href="./panel.php">Powrót</a><br>
     <a href="./wyloguj.php">Wyloguj się</a>
 </body>
 </html>
