@@ -52,11 +52,10 @@ function resetValues(){
 function calculatePrice(){
    let priceCount = 0;
 
-   if(staticPageNum.value === '' || staticPageNum.value <= 0){
+   if(staticPageNum.value === ''){
         wrongInput();   
         staticPageNum.value = '';
         price.innerText = '00,00 zł';
-
    } else {
         okInput();
         if(pgYes.checked){ priceCount+=500; }
@@ -66,6 +65,7 @@ function calculatePrice(){
         if(timeExpress.checked){ priceCount = priceCount * 1.2; }
 
         price.innerText = `${priceCount} zł`;
+        staticPageNum.value = '';
     }
 }
 
