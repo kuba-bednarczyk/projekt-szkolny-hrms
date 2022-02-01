@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/wycena.css">
+    <title>Wycena projektu</title>
+</head>
+<body>
+        <div class="container">
+            <div class="nav">
+                <a href="./index.html" class="nav__goback">Strona główna</a>
+                <div class="nav__logo">
+                    <h1>XYZ DATA</h1><i class="fas fa-laptop-code"></i>
+                </div>  
+            </div>
+            <div class="pricing">
+                <div class="pricing__form">
+                    <h2>wycena projektu</h2>
+                    <form class="grid">
+                        <span class="grid__left">
+                            <label class="label-1">projekt graficzny: </label><br>
+                        </span>
+                        <span class="grid__right inner-grid">
+                            <span class="top">
+                                <input type="radio" id="pg-yes" name="pg">
+                                <label>tak</label>
+                            </span>
+                            <span class="bottom">
+                                <input type="radio" id="pg-no" name="pg">
+                                <label>nie</label>
+                            </span>
+                        </span>
+
+                        <span class="grid__left">
+                            <label class="label-2">liczba podstron statycznych:</label>
+                        </span>
+                        <span class="grid__right inner-grid">
+                            <input id="staticPageNum" class="input-ok" type="number" placeholder="np. 3">
+                        </span>
+
+                        <span class="grid__left">
+                            <label class="label-3">system zarządzania treścią CMS: </label>
+                        </span>
+                        <span class="grid__right inner-grid">
+                            <span class="top">
+                                <input type="radio" id="cms-yes" name="cms">
+                                <label>tak</label>
+                            </span>
+                            <span class="bottom">
+                                <input type="radio" id="cms-no" name="cms">
+                                <label>nie</label>
+                            </span>
+                        </span>
+
+                        <span class="grid__left">
+                            <label class="label-4">czas wykonania: </label>
+                        </span>
+                        <span class="grid__right inner-grid">
+                            <span class="top">
+                                <input type="radio" id="express" name="exec_time">
+                                <label>ekspres</label>
+                            </span>
+                            <span class="bottom">
+                                <input type="radio" id="usual" name="exec_time">
+                                <label>zwykły</label>
+                            </span>
+                        </span>
+
+                        <span class="grid__left">
+                            <label class="label-5">optymalizacja SEO: </label>
+                        </span>
+                        <span class="grid__right inner-grid">
+                            <span class="top">
+                                <input type="radio" id="seo-yes" name="seo">
+                                <label>tak</label>
+                            </span>
+                            <span class="bottom">
+                                <input type="radio" id="seo-no" name="seo">
+                                <label>nie</label>
+                            </span>
+                        </span>
+
+                    </form>
+                    <button id="calculateBtn">oblicz</button>
+                </div>
+                <div class="pricing__result">
+                    <h2>cena</h2>
+                    <span class="price">00,00 zł</span>
+                    <button class="resetBtn">resetuj</button>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <p>Projekt i realizacja: Jakub Bednarczyk 3etG</p>
+            <div class="contact">
+                <p>telefon: +48 901 934 934</p>
+                <p>e-mail: xyzdata@mail.com</p>
+                <p>Adres: 20-110 Lublin, ul. Miła 9</p>
+            </div>
+        </footer>
+
+
+    <script src="./js/wycena.js"></script>
+</body>
+</html>

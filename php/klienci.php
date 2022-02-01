@@ -203,13 +203,11 @@
                     ulica = '$mod_ul',
                     numer = '$mod_nr' WHERE id_klienta = $id ");
 
-                    // $query_mod = mysqli_query($db, 
-                    // "UPDATE klienci SET nazwa = $mod_name,  WHERE id_klienta = $id");
 
                     if(mysqli_affected_rows($db) > 0){
                         echo "Pomyślnie zmodyfikowano informacje o kliencie";
                     } else {
-                        echo "Błąd przy modyfikacji".mysqli_error($db);
+                        echo "Błąd przy modyfikacji";
                     }
                 }
             }
