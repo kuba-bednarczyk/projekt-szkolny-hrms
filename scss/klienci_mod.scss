@@ -1,0 +1,129 @@
+@import './variables';
+@import './globals';
+@import './mixins';
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: $light-grey;
+}
+
+
+.nav{
+    // display: flex;
+    @include nav;
+
+    p{
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        // border: 2px solid blue;
+        color: $cyan-green;
+        line-height: 50px;
+        padding: 10px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+
+    &__logo{
+        // border: 2px solid red;
+        width: 280px;
+        display: flex;
+        float: right;
+        height: 100%;
+        h1{
+            color: $cyan-green;
+            line-height: 50px;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    
+        .fa-laptop-code{
+            margin: auto;
+            margin-right: 35px;
+            margin-left: 5px;
+            color: $cyan-green;
+            font-size: 40px;
+        }
+    }
+}
+
+.hamburger{
+    position: fixed;
+    display: inline-block;
+    cursor: pointer;
+    top: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    // border: 1px solid blue;
+    width: 45px;
+    height: 50px;
+
+    &__box{
+        display: inline-block;
+        position: relative;
+        // border: 1px solid green;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__inner{
+        @include hamburger-line;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after, &::before{
+            content: '';
+            left: 0;
+            @include hamburger-line;
+            transition: transform .2s ease-in-out;
+        }
+
+        &::before{
+            top: -12px;
+        }
+
+        &::after{
+            top: 12px;
+        }
+
+        transition: background-color .2s ease-in-out;
+    }
+
+    transition: all .2s ease-in-out;
+}
+
+.hamburger--active{
+
+    .hamburger__inner{
+        background-color: transparent;
+    }
+
+    .hamburger__inner::before{
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .hamburger__inner::after{
+        transform: translateY(-12px) rotate(-45deg);
+    }   
+}
+
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $cyan-green;
+    width: 350px;
+    height: 100vh;
+}
+

@@ -63,3 +63,11 @@
         }
     }
 }
+
+@mixin hamburger-line{
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $cyan-green;
+    position: absolute;
+}
