@@ -47,7 +47,6 @@
                     <label>Numer domu: </label><input type="text" name="numer">
                     <input type="submit" name="submit" value="dodaj">
                 </form>
-                <!-- <h3>dane zostały pomyślnie zapisane do bazy!</h3> -->
             <?php
                 if(isset($_POST['submit'])){
                     $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
@@ -72,18 +71,187 @@
                 }   
             ?>
             </div>
+
+
             <div class="form-box form-box__del" id="delete">
                 <h1>usuwanie</h1>
-                <form method="POST"></form>
+                <form method="POST">
+                    <div class="search-form-box">
+                        <label>Wyszukaj klienta do usunięcia (ID): </label>
+                        <input type="number" name="input_search">
+                        <input type="submit" name="search" value="szukaj">
+                    </div>
+<!-- -----------------------PHP USUWANIE-------------------------------------- -->
+<?php
+            $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
+            if(isset($_POST['input_search'])){
+                $input_search = $_POST['input_search'];
+                $query_search = mysqli_query(
+                $db, "SELECT * FROM klienci WHERE id_klienta = $input_search");
+
+
+                if(empty($input_search)){
+                    echo "<p>Musisz podać ID!</p>";
+                } else if (mysqli_num_rows($query_search) == 0){
+                    echo "<p>Nie ma takiego klienta w bazie!</p>";
+                } else {
+                    echo "<table>";
+                    echo "<tr>";
+                    echo 
+                        "<th>"."id_klienta"."</th>".
+                        "<th>"."nazwa"."</th>".
+                        "<th>"."nr_telefonu"."</th>".
+                        "<th>"."email"."</th>".
+                        "<th>"."miejscowość"."</th>".
+                        "<th>"."ulica"."</th>".
+                        "<th>"."numer"."</th>";
+                    echo "</tr>";
+                    while($row = mysqli_fetch_array($query_search)){
+                        echo "<tr>";
+                        echo
+                            "<td>".$row['id_klienta']."</td>".
+                            "<td>".$row['nazwa']."</td>".
+                            "<td>".$row['nr_telefonu']."</td>". 
+                            "<td>".$row['email']."</td>". 
+                            "<td>".$row['miejscowosc']."</td>". 
+                            "<td>".$row['ulica']."</td>". 
+                            "<td>".$row['numer']."</td>";
+                        echo "</tr>";
+                    }   
+                    echo "</table>";
+
+                    echo "
+                    <div class='action-form'>
+                        <label>Podaj ID klienta do usunięcia: </label>
+                        <input type='number' name='input_del'>
+                        <input type='submit' name='del' value='usuń'>
+                    </div>              
+                    ";
+                }
+
+                if(empty($input_search)){
+                    if(isset($_POST['del'])){
+                        $id_input = $_POST['input_del'];
+        
+                        $query_delete = mysqli_query($db,
+                        "DELETE FROM klienci WHERE id_klienta = $id_input");
+                        
+                        if(mysqli_affected_rows($db) > 0){
+                            echo "<h3 class='ok'>Pomyślnie usunięto klienta z bazy danych!</h3>";
+                        } else {
+                            echo "<h3>Błąd w usunięciu klienta z bazy</h3>";
+                        }
+                    }
+                }
+            };
+
+            mysqli_close($db); 
+?>
+<!-- ------------------------END PHP------------------------ -->
+                </form>
             </div>
+
+
             <div class="form-box form-box__mod" id="modify">
                 <h1>modyfikacja</h1>
+                <form method="POST">
+                    <div class="search-form-box">
+                        <label>Wyszukaj klienta do modyfikacji (ID): </label>
+                        <input type="number" name="input_search_mod" value="<?php 
+                        if(isset($_POST['input_search_mod']))
+                        echo $_POST['input_search_mod']
+                        ?>">
+                        <input type="submit" name="search" value="szukaj">
+                    </div>
+<!----------------------- PHP MODYFIKACJA -------------------------->
+            <?php
+                $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
+
+                if(isset($_POST['input_search_mod'])){
+                    $input_search = $_POST['input_search_mod'];
+                    $query_search = mysqli_query($db, 
+                    "SELECT * FROM klienci WHERE id_klienta = $input_search");
+
+                    if(empty($input_search)){
+                       echo "<p>Musisz podać ID!</p>";
+                    } else if (mysqli_num_rows($query_search) == 0){
+                        echo "<p>Nie ma takiego klienta w bazie!</p>";
+                    } else {
+                    echo "<table class='mod-table'>";
+                    echo "<tr>";
+                    echo 
+                        "<th>"."id_klienta"."</th>".
+                        "<th>"."nazwa"."</th>".
+                        "<th>"."nr_telefonu"."</th>".
+                        "<th>"."email"."</th>".
+                        "<th>"."miejscowość"."</th>".
+                        "<th>"."ulica"."</th>".
+                        "<th>"."numer"."</th>";
+                    echo "</tr>";
+                    $arr = array();
+                    while($row = mysqli_fetch_array($query_search)){
+                        echo "<tr>";
+                        echo
+                            "<td>".$row['id_klienta']."</td>".
+                            "<td>".$row['nazwa']."</td>".
+                            "<td>".$row['nr_telefonu']."</td>". 
+                            "<td>".$row['email']."</td>". 
+                            "<td>".$row['miejscowosc']."</td>". 
+                            "<td>".$row['ulica']."</td>". 
+                            "<td>".$row['numer']."</td>";
+                            $arr = $row;
+                        echo "</tr>";
+                    }   
+                    echo "</table>";
+
+                    echo "
+                    <div class='modify-box'>
+                    <label>Nazwa: </label><input type='text' name='mod_name' value='".$arr['nazwa']."'><br>
+                    <label>Nr. telefonu: </label><input type='number' name='mod_tel' value='".$arr['nr_telefonu']."'><br>
+                    <label>E-mail: </label><input type='text' name='mod_email' value='".$arr['email']."'><br>
+                    <label>Miejscowość: </label><input type='text' name='mod_miejsc' value='".$arr['miejscowosc']."'><br>
+                    <label>Ulica: </label><input type='text' name='mod_ul' value='".$arr['ulica']."'><br>
+                    <label>Numer: </label><input type='number' name='mod_nr' value='".$arr['numer']."'><br>
+                    <input type='submit' name='mod' value='modyfikuj'><br>
+                    </div>
+                    ";
+                    };
+
+                    if(isset($_POST['mod'])){
+                        $mod_name = $_POST['mod_name'];
+                        $mod_tel = $_POST['mod_tel'];
+                        $mod_email = $_POST['mod_email'];
+                        $mod_miejsc = $_POST['mod_miejsc'];
+                        $mod_ul = $_POST['mod_ul'];
+                        $mod_nr = $_POST['mod_nr'];
+        
+                        $id = $_POST['input_search_mod'];
+        
+                        $query_mod = mysqli_query($db,
+                        "UPDATE klienci SET 
+                        nazwa = '$mod_name', 
+                        nr_telefonu = '$mod_tel',
+                        email = '$mod_email',
+                        miejscowosc = '$mod_miejsc',
+                        ulica = '$mod_ul',
+                        numer = '$mod_nr' WHERE id_klienta = $id ");
+    
+    
+                        if(mysqli_affected_rows($db) > 0){
+                            echo "<h3 class='ok'>Pomyślnie zmodyfikowano informacje o kliencie.</h3>";
+                        } else {
+                            echo "<h3 class='wrong'>Błąd przy modyfikacji</h3>";
+                        }
+                    }
+                };
+            ?>
+                </form>
             </div>
         </div>
     </div>
 
 
     <script src="../js/menuAnimation.js"></script>
-</body>
+    </body>
 </html>

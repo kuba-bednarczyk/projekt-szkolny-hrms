@@ -38,6 +38,63 @@ body {
   padding: 15px;
   text-transform: lowercase;
 }
+.form-box h3 {
+  margin: 20px 0;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+}
+.form-box .ok {
+  color: #2ecc71;
+}
+.form-box .wrong {
+  color: red;
+}
+.form-box .search-form-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.form-box .search-form-box label {
+  color: #1aebb7;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.form-box .search-form-box input[name=input_search] {
+  height: 35px;
+  width: 100px;
+  margin: 0 20px;
+  border: none;
+  outline: 2px solid #dfe6e9;
+  border-radius: 5px;
+  color: #1aebb7;
+  padding: 10px;
+  font-size: 1.1em;
+}
+.form-box .search-form-box input[name=input_search]:focus {
+  outline: 2px solid #1aebb7;
+}
+.form-box .search-form-box input[name=search] {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  color: #fff;
+  background-color: #1aebb7;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.form-box .search-form-box input[name=search]:hover {
+  opacity: 0.7;
+  transform: translateY(-5px);
+}
 .form-box__add {
   display: flex;
   flex-direction: column;
@@ -88,21 +145,206 @@ body {
   letter-spacing: 1px;
   font-weight: 500;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 .form-box__add form input[type=submit]:hover {
   opacity: 0.7;
   transform: translateY(5px);
 }
-.form-box__add h3 {
-  margin: 20px 0;
-  font-size: 1em;
+.form-box__del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+}
+.form-box__del form {
+  width: 80%;
+}
+.form-box__del form .action-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.form-box__del form .action-form label {
+  margin: 0 20px;
+  color: #1aebb7;
+  font-size: 1.2em;
   font-weight: 600;
 }
-.form-box__add .ok {
-  color: #2ecc71;
+.form-box__del form .action-form input[type=number] {
+  height: 35px;
+  width: 100px;
+  margin: 0 20px;
+  border: none;
+  outline: 2px solid #dfe6e9;
+  border-radius: 5px;
+  color: #1aebb7;
+  padding: 10px;
+  font-size: 1.1em;
 }
-.form-box__add .wrong {
+.form-box__del form .action-form input[type=number]:focus {
+  outline: 2px solid #1aebb7;
+}
+.form-box__del form .action-form input[type=submit] {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  color: #fff;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+}
+.form-box__del form .action-form input[type=submit]:hover {
+  opacity: 0.7;
+  transform: translateY(-5px);
+}
+.form-box__del p {
+  text-align: center;
   color: red;
+  font-size: 1em;
+  font-weight: 500;
+}
+.form-box__del table, .form-box__del td, .form-box__del th {
+  border: 2px solid #1aebb7;
+  border-collapse: collapse;
+  padding: 10px;
+  color: #1aebb7;
+  text-align: center;
+}
+.form-box__mod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-box__mod form {
+  width: 80%;
+}
+.form-box__mod form .action-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.form-box__mod form .action-form label {
+  margin: 0 20px;
+  color: #1aebb7;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.form-box__mod form .action-form input[type=number] {
+  height: 35px;
+  width: 100px;
+  margin: 0 20px;
+  border: none;
+  outline: 2px solid #dfe6e9;
+  border-radius: 5px;
+  color: #1aebb7;
+  padding: 10px;
+  font-size: 1.1em;
+}
+.form-box__mod form .action-form input[type=number]:focus {
+  outline: 2px solid #1aebb7;
+}
+.form-box__mod form .action-form input[type=submit] {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  color: #fff;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+}
+.form-box__mod form .action-form input[type=submit]:hover {
+  opacity: 0.7;
+  transform: translateY(-5px);
+}
+.form-box__mod .search-form-box input[type=number] {
+  height: 35px;
+  width: 100px;
+  margin: 0 20px;
+  border: none;
+  outline: 2px solid #dfe6e9;
+  border-radius: 5px;
+  color: #1aebb7;
+  padding: 10px;
+  font-size: 1.1em;
+}
+.form-box__mod .search-form-box input[type=number]:focus {
+  outline: 2px solid #1aebb7;
+}
+.form-box__mod p {
+  text-align: center;
+  color: red;
+  font-size: 1em;
+  font-weight: 500;
+}
+.form-box__mod table, .form-box__mod td, .form-box__mod th {
+  border: 2px solid #1aebb7;
+  border-collapse: collapse;
+  padding: 10px;
+  color: #1aebb7;
+  text-align: center;
+}
+.form-box__mod .modify-box {
+  margin: 20px auto;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  grid-gap: 5px;
+  align-items: center;
+}
+.form-box__mod .modify-box label {
+  grid-column: 1/2;
+  color: #1aebb7;
+  text-align: center;
+  font-size: 1.2em;
+}
+.form-box__mod .modify-box input[type=text], .form-box__mod .modify-box input[type=number] {
+  grid-column: 2/3;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  outline: 2px solid #dfe6e9;
+  padding: 10px;
+  color: #1aebb7;
+  font-size: 1.1em;
+}
+.form-box__mod .modify-box input[type=text]:focus, .form-box__mod .modify-box input[type=number]:focus {
+  outline: 2px solid #1aebb7;
+}
+.form-box__mod .modify-box input[type=submit] {
+  grid-column: 1/3;
+  width: 30%;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  justify-self: center;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #1aebb7;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 1.1em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.form-box__mod .modify-box input[type=submit]:hover {
+  opacity: 0.7;
+  transform: translateY(-5px);
 }
 
 .nav {
