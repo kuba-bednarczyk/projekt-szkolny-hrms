@@ -301,7 +301,6 @@ body{
         left: 50%;
         transform: translateX(-50%);
         width: 200px;
-        // border: 2px solid blue;
         color: $cyan-green;
         line-height: 50px;
         padding: 10px;
@@ -312,7 +311,6 @@ body{
     }
 
     &__logo{
-        // border: 2px solid red;
         width: 280px;
         display: flex;
         float: right;

@@ -1,0 +1,288 @@
+@import './variables';
+@import './globals';
+@import './mixins';
+
+
+body{ overflow-x: hidden; }
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100%;
+    background-image: url('../images/background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+// MAIN CONTENT - report boxes styles
+.main-content{
+    margin-top: 70px;
+    width: 1000px;
+    h1{
+        text-align: center;
+        color: $cyan-green;
+        font-size: 2em;
+        margin: 10px 0;
+    }
+}
+
+.report-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+    min-height: 500px;
+    margin: 50px 20px;
+
+    table, td, th{
+        margin: 20px 0;
+        border: 2px solid $cyan-green;
+        border-collapse: collapse;
+        padding: 10px;
+        color: $cyan-green;
+        text-align: center;
+    }
+
+    td{
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+
+    h3{
+        margin: 10px 0;
+        font-weight: 500;
+        font-size: 1em;
+        text-align: center;
+        color: red;
+    }
+
+    p{  
+        margin: 10px 0;
+        color: $cyan-green;
+        font-size: 1.5em;
+        font-weight: 600;
+        &::after{
+            display: block;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: $cyan-green;
+            margin-top: 5px;
+        }
+    }
+}
+
+.search-box{
+    form{
+        display: flex;
+        align-items: center;
+    }
+
+    label{
+        margin: 0 20px;
+        color: $cyan-green;
+        font-size: 1.2em;
+    }
+
+    input{
+        height: 35px;
+        padding: 10px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    input[type=number]{
+        outline: 2px solid $light-grey;
+        color: $cyan-green;
+        font-size: 1.1em;
+        transition: outline .2s ease-in-out;
+        width: 120px;
+        &:focus{ outline: 2px solid $cyan-green }
+    }
+
+    input[type=submit]{
+        height: 40px;
+        width: 80px;
+        color: $white;
+        background-color: $cyan-green;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        &:hover{
+            opacity: 0.7;
+            transform: translateY(-5px);
+        }
+    }
+}
+
+//NAVIGATION
+.nav{
+    @include nav;
+    box-shadow: 0 2px 4px -2px $cyan-green;
+
+    p{
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        color: $cyan-green;
+        line-height: 50px;
+        padding: 10px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+
+    &__logo{
+        width: 280px;
+        display: flex;
+        float: right;
+        height: 100%;
+        h1{
+            color: $cyan-green;
+            line-height: 50px;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    
+        .fa-laptop-code{
+            margin: auto;
+            margin-right: 35px;
+            margin-left: 5px;
+            color: $cyan-green;
+            font-size: 40px;
+        }
+    }
+}
+
+
+//HAMBURGER MENU
+.hamburger{
+    position: fixed;
+    display: inline-block;
+    cursor: pointer;
+    top: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    width: 45px;
+    height: 50px;
+
+    &__box{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__inner{
+        @include hamburger-line;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after, &::before{
+            content: '';
+            left: 0;
+            @include hamburger-line;
+            transition: transform .2s ease-in-out;
+        }
+
+        &::before{
+            top: -12px;
+        }
+
+        &::after{
+            top: 12px;
+        }
+
+        transition: background-color .2s ease-in-out;
+    }
+
+    transition: all .2s ease-in-out;
+}
+
+
+
+.hamburger--active{
+    transform: translateX(350px);
+
+    .hamburger__inner{
+        background-color: transparent;
+    }
+
+    .hamburger__inner::before{
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .hamburger__inner::after{
+        transform: translateY(-12px) rotate(-45deg);
+    }   
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $cyan-green;
+    width: 350px;
+    height: 100vh;
+    transform: translateX(-350px);
+    transition: transform .2s ease-in-out;
+
+    &__list{
+        margin-top: 200px;
+    }
+
+    &__item{
+        margin: 50px 0;
+        list-style-type: none;
+        text-align: center;
+        a{
+            font-size: 1.8em;
+            text-decoration: none;
+            color: $white;
+            text-transform: lowercase;
+
+            &::after{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5px;
+                display: block;
+                content: '';
+                // width: 100%;
+                width: 0%;
+                height: 2px;
+                border-radius: 2px;
+                background-color: $white;
+                transition: width .2s ease-in-out;
+            }
+
+            &:hover{
+                &::after{
+                    width: 100%;
+                }
+            }
+
+            .fas{
+                font-size: .9em;
+            }
+        }
+
+        &:last-child{
+            margin-top: 50%;
+        }
+    }
+
+    &--active{
+        transform: translateX(0px);
+    }
+}
