@@ -20,7 +20,7 @@ cmsNo.checked = true;
 staticPageNum.value = '';
 timeUsual.checked = true;
 seoNo.checked = true;
-price.innerHTML = '00,00zł';
+price.innerHTML = '00,00 zł';
 
 let p = document.createElement("p");
 
@@ -46,7 +46,7 @@ function resetValues(){
     staticPageNum.value = '';
     timeUsual.checked = true;
     seoNo.checked = true;
-    price.innerHTML = '00,00zł';
+    price.innerHTML = '00,00 zł';
 }
 
 function calculatePrice(){

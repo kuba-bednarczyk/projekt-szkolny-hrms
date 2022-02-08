@@ -135,7 +135,7 @@ body {
   content: "+ 600zł ";
 }
 .container .pricing__form .grid__left .label-4::after {
-  content: "express: +20%";
+  content: "ekspres: +20%";
 }
 .container .pricing__form .grid__left .label-5::after {
   content: "+ 600zł";
