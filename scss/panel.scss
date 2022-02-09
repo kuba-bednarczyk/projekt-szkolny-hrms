@@ -19,15 +19,16 @@ body { overflow-x: hidden };
 .main-content{
     padding: 20px;
     margin-top: 70px;
-
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, 500px);
-    grid-template-rows: repeat(2, 300px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-gap: 50px;
     margin-bottom: 50px;
 
-    a{
+    a{  
+        width: 350px;
+        height: 250px;
         display: block;
         box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.2);
         background-color: $white;
@@ -37,7 +38,7 @@ body { overflow-x: hidden };
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 2em;
+        font-size: 1.7em;
 
         transition: all .2s ease-in-out;
 

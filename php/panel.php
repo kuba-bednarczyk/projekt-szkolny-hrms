@@ -24,25 +24,29 @@
             </div>  
         </div>
         <div class="main-content">
-            <a href="">
+            <a href="./zespoly.php">
                 <h3>Zespoły</h3>
                 <i class="fas fa-user-friends"></i>
             </a> <!-- zespoly -->
-            <a href="">
+            <a href="./pracownicy.php">
                 <h3>Pracownicy</h3>
                 <i class="fas fa-user-tie"></i>
             </a>  <!-- pracownicy -->
-            <a href="./raporty.php">
+            <a href="./raporty.php"> 
                 <h3>Raporty</h3>
                 <i class="far fa-list-alt"></i>
             </a> 
-            <a href="./spotkania">
+            <a href="./spotkania.php">
                 <h3>Spotkania</h3>
                 <i class="far fa-handshake"></i>
             </a> <!-- spotkania -->
             <a href="./klienci.php">
                 <h3>Klienci</h3>
                 <i class="fas fa-user"></i>
+            </a> 
+            <a href="./projekty.php">
+                <h3>Projekty</h3>
+                <i class="fas fa-project-diagram"></i>
             </a> 
         </div>
     </div>

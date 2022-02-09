@@ -1,0 +1,472 @@
+@import './variables';
+@import './globals';
+@import './mixins';
+
+body{
+    overflow-x: hidden;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100%;
+    background-image: url('../images/background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    .main-content{
+        margin-top: 70px;
+        width: 1000px;
+    }
+}
+
+.form-box{
+    // style ogólne
+    margin: 50px 20px;
+    background-color: $white;
+    min-height: 600px;
+
+     h1{
+        color: $cyan-green;
+        text-align: center;
+        padding: 15px;
+        text-transform: lowercase;
+    }
+
+    h3{
+        margin: 20px 0;
+        font-size: 1em;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .ok{ color: $emerald; }
+    .wrong{ color: red; }
+
+    .search-form-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // border: 2px solid red;
+        padding: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        label{
+            color: $cyan-green;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        input[name=input_search]{
+            height: 35px;
+            width: 100px;
+            margin: 0 20px;
+            border: none;
+            outline: 2px solid $light-grey;
+            border-radius: 5px;
+            color: $cyan-green;
+            padding: 10px;
+            font-size: 1.1em;
+
+            &:focus{
+                outline: 2px solid $cyan-green;
+            }
+        }
+
+        input[name=search]{
+            padding: 10px;
+            height: 40px;
+            width: 90px;
+            color: $white;
+            background-color: $cyan-green;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 1em;
+            letter-spacing: 1px;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 0.7;
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+
+    // moduł dodawania
+    &__add{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        form{
+            margin: 100px 0 40px;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-gap: 10px 0;
+            width: 60%;
+
+            label{
+                grid-column: 1/2;
+                padding: 0 20px;
+                text-align: center;
+                color: $cyan-green;
+                font-size: 1.2em;
+                font-weight: 600;
+            }
+
+            input{
+                border-radius: 5px;
+                border: none;
+                outline: 2px solid $light-grey;
+                height: 35px;
+                grid-column: 2/3;
+                margin: 0 20px;
+                width: 80%;
+                padding: 10px;
+                font-size: 1.1em;
+                color: $cyan-green;
+
+                &:focus{
+                    outline: 2px solid $cyan-green;
+                }
+            }
+
+            input[type=submit]{
+                grid-column: 1/3;
+                width: 30%;
+                height: 50px;
+                border: none;
+                outline: none;
+                justify-self: center;
+                margin-top: 10px;
+                cursor: pointer;
+                color: $white;
+                background-color: $cyan-green;
+                letter-spacing: 1px;
+                font-weight: 500;
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.7;
+                    transform: translateY(5px);
+                }
+            }
+        }
+    }
+
+    // moduł usuwania 
+    &__del{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 500px;
+
+        form{ @include form-mod-styles};
+
+            // alert
+            p{
+                text-align: center;
+                color: red;
+                font-size: 1em;
+                font-weight: 500;
+            }
+
+            // table
+            table, td, th{
+                border: 2px solid $cyan-green;
+                border-collapse: collapse;
+                padding: 10px;
+                color: $cyan-green;
+                text-align: center;
+            }
+
+            table{ margin: 0 auto; }
+        }
+
+    // moduł modyfikacji
+    &__mod{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        form{ @include form-mod-styles }
+
+        .search-form-box{
+            input[type=number]{
+                height: 35px;
+                width: 100px;
+                margin: 0 20px;
+                border: none;
+                outline: 2px solid $light-grey;
+                border-radius: 5px;
+                color: $cyan-green;
+                padding: 10px;
+                font-size: 1.1em;
+    
+                &:focus{
+                    outline: 2px solid $cyan-green;
+                }
+            }
+        }
+
+        p{
+            text-align: center;
+            color: red;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        // table
+        table, td, th{
+            border: 2px solid $cyan-green;
+            border-collapse: collapse;
+            padding: 10px;
+            color: $cyan-green;
+            text-align: center;
+        }
+
+        table{ margin: 0 auto; }
+
+        .modify-box{
+            margin: 20px auto;
+            width: 60%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            grid-gap: 5px;
+            align-items: center;
+
+            label{
+                grid-column: 1/2;
+                color: $cyan-green;
+                text-align: center;
+                font-size: 1.2em;
+            }
+
+            input[type=text], input[type=number]{
+                grid-column: 2/3;
+                height: 35px;
+                border: none;
+                border-radius: 5px;
+                outline: 2px solid $light-grey;
+                padding: 10px;
+                color: $cyan-green;
+                font-size: 1.1em;
+
+                &:focus{
+                    outline: 2px solid $cyan-green;
+                }
+            }
+
+            input[type=submit]{
+                grid-column: 1/3;
+                width: 30%;
+                height: 50px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                justify-self: center;
+                margin-top: 10px;
+                cursor: pointer;
+                color: $white;
+                background-color: $cyan-green;
+                letter-spacing: 1px;
+                font-weight: 500;
+                font-size: 1.1em;
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.7;
+                    transform: translateY(-5px);
+                }
+            }
+        }
+
+    }
+}
+
+
+
+.nav{
+    // display: flex;
+    @include nav;
+    box-shadow: 0 2px 4px -2px $cyan-green;
+
+    p{
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        color: $cyan-green;
+        line-height: 50px;
+        padding: 10px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+
+    &__logo{
+        width: 280px;
+        display: flex;
+        float: right;
+        height: 100%;
+        h1{
+            color: $cyan-green;
+            line-height: 50px;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    
+        .fa-laptop-code{
+            margin: auto;
+            margin-right: 35px;
+            margin-left: 5px;
+            color: $cyan-green;
+            font-size: 40px;
+        }
+    }
+}
+
+
+
+.hamburger{
+    position: fixed;
+    display: inline-block;
+    cursor: pointer;
+    top: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    // border: 1px solid blue;
+    width: 45px;
+    height: 50px;
+
+    &__box{
+        display: inline-block;
+        position: relative;
+        // border: 1px solid green;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__inner{
+        @include hamburger-line;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after, &::before{
+            content: '';
+            left: 0;
+            @include hamburger-line;
+            transition: transform .2s ease-in-out;
+        }
+
+        &::before{
+            top: -12px;
+        }
+
+        &::after{
+            top: 12px;
+        }
+
+        transition: background-color .2s ease-in-out;
+    }
+
+    transition: all .2s ease-in-out;
+}
+
+
+
+.hamburger--active{
+    transform: translateX(350px);
+
+    .hamburger__inner{
+        background-color: transparent;
+    }
+
+    .hamburger__inner::before{
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .hamburger__inner::after{
+        transform: translateY(-12px) rotate(-45deg);
+    }   
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $cyan-green;
+    width: 350px;
+    height: 100vh;
+    transform: translateX(-350px);
+    transition: transform .2s ease-in-out;
+
+    &__list{
+        margin-top: 200px;
+    }
+
+    &__item{
+        // border: 2px solid red;
+        margin: 50px 0;
+        list-style-type: none;
+        text-align: center;
+        a{
+            font-size: 1.8em;
+            text-decoration: none;
+            color: $white;
+            text-transform: lowercase;
+
+            &::after{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5px;
+                display: block;
+                content: '';
+                // width: 100%;
+                width: 0%;
+                height: 2px;
+                border-radius: 2px;
+                background-color: $white;
+                transition: width .2s ease-in-out;
+            }
+
+            &:hover{
+                &::after{
+                    width: 100%;
+                }
+            }
+
+            .fas{
+                font-size: .9em;
+            }
+        }
+
+        &:last-child{
+            margin-top: 50%;
+        }
+
+
+    }
+
+    &--active{
+        transform: translateX(0px);
+    }
+}

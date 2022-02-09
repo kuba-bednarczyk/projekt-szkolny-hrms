@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/klienci_mod.css">
+    <link rel="stylesheet" href="../css/klienci.css">
     <title>Panel Administracyjny: Klienci</title>
 </head>
 <body>
@@ -39,13 +39,13 @@
             <div class="form-box form-box__add" id="add">
                 <h1>dodawanie</h1>
                 <form method="POST">
-                    <label>Nazwa: </label><input type="text" name="nazwa">
-                    <label>Nr. telefonu: </label><input type="text" name="nr_telefonu">
-                    <label>E-mail: </label><input type="text" name="email">
-                    <label>Miejscowość: </label><input type="text" name="miejscowosc">
-                    <label>Ulica: </label><input type="text" name="ulica">
-                    <label>Numer domu: </label><input type="text" name="numer">
-                    <input type="submit" name="submit" value="dodaj">
+                    <label>Nazwa: </label><input type="text" name="nazwa" required>
+                    <label>Nr. telefonu: </label><input type="text" name="nr_telefonu" min="0" minlength="9" maxlength="9" required>
+                    <label>E-mail: </label><input type="text" name="email" required>
+                    <label>Miejscowość: </label><input type="text" name="miejscowosc" required>
+                    <label>Ulica: </label><input type="text" name="ulica" required>
+                    <label>Numer domu: </label><input type="text" name="numer" required>
+                    <input type="submit" name="submit" value="dodaj" required>
                 </form>
             <?php
                 if(isset($_POST['submit'])){
@@ -78,7 +78,10 @@
                 <form method="POST">
                     <div class="search-form-box">
                         <label>Wyszukaj klienta do usunięcia (ID): </label>
-                        <input type="number" name="input_search">
+                        <input type="number" name="input_search" value="<?php 
+                        if(isset($_POST['input_search']))
+                        echo $_POST['input_search']
+                        ?>" min="0">
                         <input type="submit" name="search" value="szukaj">
                     </div>
 <!-- -----------------------PHP USUWANIE-------------------------------------- -->
@@ -90,9 +93,41 @@
                 $query_search = mysqli_query(
                 $db, "SELECT * FROM klienci WHERE id_klienta = $input_search");
 
+                $query_search_all = mysqli_query($db, "SELECT * FROM klienci");
 
                 if(empty($input_search)){
-                    echo "<p>Musisz podać ID!</p>";
+                    echo "<table>";
+                    echo "<tr>";
+                    echo 
+                        "<th>"."id_klienta"."</th>".
+                        "<th>"."nazwa"."</th>".
+                        "<th>"."nr_telefonu"."</th>".
+                        "<th>"."email"."</th>".
+                        "<th>"."miejscowość"."</th>".
+                        "<th>"."ulica"."</th>".
+                        "<th>"."numer"."</th>";
+                    echo "</tr>";
+                    while($row = mysqli_fetch_array($query_search_all)){
+                        echo "<tr>";
+                        echo
+                            "<td>".$row['id_klienta']."</td>".
+                            "<td>".$row['nazwa']."</td>".
+                            "<td>".$row['nr_telefonu']."</td>". 
+                            "<td>".$row['email']."</td>". 
+                            "<td>".$row['miejscowosc']."</td>". 
+                            "<td>".$row['ulica']."</td>". 
+                            "<td>".$row['numer']."</td>";
+                        echo "</tr>";
+                    }   
+                    echo "</table>";
+
+                    echo "
+                    <div class='action-form'>
+                        <label>Podaj ID klienta do usunięcia: </label>
+                        <input type='number' name='input_del'>
+                        <input type='submit' name='del' value='usuń'>
+                    </div>              
+                    ";
                 } else if (mysqli_num_rows($query_search) == 0){
                     echo "<p>Nie ma takiego klienta w bazie!</p>";
                 } else {
@@ -158,7 +193,7 @@
                 <form method="POST">
                     <div class="search-form-box">
                         <label>Wyszukaj klienta do modyfikacji (ID): </label>
-                        <input type="number" name="input_search_mod" value="<?php 
+                        <input type="number" name="input_search_mod" min="0" value="<?php 
                         if(isset($_POST['input_search_mod']))
                         echo $_POST['input_search_mod']
                         ?>">
@@ -207,13 +242,24 @@
 
                     echo "
                     <div class='modify-box'>
-                    <label>Nazwa: </label><input type='text' name='mod_name' value='".$arr['nazwa']."'><br>
-                    <label>Nr. telefonu: </label><input type='number' name='mod_tel' value='".$arr['nr_telefonu']."'><br>
-                    <label>E-mail: </label><input type='text' name='mod_email' value='".$arr['email']."'><br>
-                    <label>Miejscowość: </label><input type='text' name='mod_miejsc' value='".$arr['miejscowosc']."'><br>
-                    <label>Ulica: </label><input type='text' name='mod_ul' value='".$arr['ulica']."'><br>
-                    <label>Numer: </label><input type='number' name='mod_nr' value='".$arr['numer']."'><br>
-                    <input type='submit' name='mod' value='modyfikuj'><br>
+                        <label>Nazwa: </label>
+                        <input type='text' name='mod_name' value='".$arr['nazwa']."' required>
+
+                        <label>Nr. telefonu: </label>
+                        <input type='text' name='mod_tel' value='".$arr['nr_telefonu']."' minlength='9' maxlength='9' required>
+
+                        <label>E-mail: </label>
+                        <input type='text' name='mod_email' value='".$arr['email']."' required>
+
+                        <label>Miejscowość: </label>
+                        <input type='text' name='mod_miejsc' value='".$arr['miejscowosc']."' required>
+
+                        <label>Ulica: </label>
+                        <input type='text' name='mod_ul' value='".$arr['ulica']."' required>
+
+                        <label>Numer: </label>
+                        <input type='number' name='mod_nr' value='".$arr['numer']."' required>
+                        <input type='submit' name='mod' value='modyfikuj'>
                     </div>
                     ";
                     };
