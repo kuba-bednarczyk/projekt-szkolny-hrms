@@ -162,7 +162,7 @@
                         $id_input = $_POST['input_del'];
         
                         $query_delete = mysqli_query($db,
-                        "DELETE FROM spotkania_z_klientami WHERE id_spotkania = $id_input");
+                        "UPDATE spotkania_z_klientami SET status = 'archiwalny' WHERE id_spotkania = $id_input");
                         
                         if(mysqli_affected_rows($db) > 0){
                             echo "<h3 class='ok'>Pomyślnie usunięto spotkanie z bazy danych!</h3>";
