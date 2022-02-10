@@ -40,7 +40,7 @@
                 <h1>dodawanie</h1>
                 <form method="POST">
                     <label>Nazwa: </label><input type="text" name="nazwa" required>
-                    <label>Nr. telefonu: </label><input type="text" name="nr_telefonu" min="0" minlength="9" maxlength="9" required>
+                    <label>Nr. telefonu: </label><input type="text" name="nr_telefonu" minlength="9" maxlength="9" required>
                     <label>E-mail: </label><input type="text" name="email" required>
                     <label>Miejscowość: </label><input type="text" name="miejscowosc" required>
                     <label>Ulica: </label><input type="text" name="ulica" required>
@@ -51,12 +51,12 @@
                 if(isset($_POST['submit'])){
                     $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
-                    $klienci_nazwa = $_POST['nazwa'];
-                    $klienci_telefon = $_POST['nr_telefonu'];
-                    $klienci_email = $_POST['email'];
-                    $klienci_miejsc = $_POST['miejscowosc'];
-                    $klienci_ulica = $_POST['ulica'];
-                    $klienci_numer = $_POST['numer'];
+                    $klienci_nazwa = mysqli_real_escape_string($db, $_POST['nazwa']);
+                    $klienci_telefon = mysqli_real_escape_string($db, $_POST['nr_telefonu']);
+                    $klienci_email = mysqli_real_escape_string($db, $_POST['email']);
+                    $klienci_miejsc = mysqli_real_escape_string($db, $_POST['miejscowosc']);
+                    $klienci_ulica = mysqli_real_escape_string($db, $_POST['ulica']);
+                    $klienci_numer = mysqli_real_escape_string($db, $_POST['numer']);
 
                     $sql = "INSERT INTO klienci VALUES (null, '$klienci_nazwa', '$klienci_telefon', '$klienci_email', '$klienci_miejsc', '$klienci_ulica', '$klienci_numer')";
                     $query = mysqli_query($db, $sql);
@@ -84,12 +84,11 @@
                         ?>" min="0">
                         <input type="submit" name="search" value="szukaj">
                     </div>
-<!-- -----------------------PHP USUWANIE-------------------------------------- -->
 <?php
             $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
             if(isset($_POST['input_search'])){
-                $input_search = $_POST['input_search'];
+                $input_search = mysqli_real_escape_string($db, $_POST['input_search']);
                 $query_search = mysqli_query(
                 $db, "SELECT * FROM klienci WHERE id_klienta = $input_search");
 
@@ -167,8 +166,7 @@
 
                 if(empty($input_search)){
                     if(isset($_POST['del'])){
-                        $id_input = $_POST['input_del'];
-        
+                        $id_input = mysqli_real_escape_string($db, $_POST['input_del']);
                         $query_delete = mysqli_query($db,
                         "DELETE FROM klienci WHERE id_klienta = $id_input");
                         
@@ -183,7 +181,6 @@
 
             mysqli_close($db); 
 ?>
-<!-- ------------------------END PHP------------------------ -->
                 </form>
             </div>
 
@@ -199,7 +196,6 @@
                         ?>">
                         <input type="submit" name="search" value="szukaj">
                     </div>
-<!----------------------- PHP MODYFIKACJA -------------------------->
             <?php
                 $db = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
@@ -265,14 +261,14 @@
                     };
 
                     if(isset($_POST['mod'])){
-                        $mod_name = $_POST['mod_name'];
-                        $mod_tel = $_POST['mod_tel'];
-                        $mod_email = $_POST['mod_email'];
-                        $mod_miejsc = $_POST['mod_miejsc'];
-                        $mod_ul = $_POST['mod_ul'];
-                        $mod_nr = $_POST['mod_nr'];
+                        $mod_name = mysqli_real_escape_string($db, $_POST['mod_name']);
+                        $mod_tel = mysqli_real_escape_string($db, $_POST['mod_tel']);
+                        $mod_email = mysqli_real_escape_string($db, $_POST['mod_email']);
+                        $mod_miejsc = mysqli_real_escape_string($db, $_POST['mod_miejsc']);
+                        $mod_ul = mysqli_real_escape_string($db, $_POST['mod_ul']);
+                        $mod_nr = mysqli_real_escape_string($db, $_POST['mod_nr']);
         
-                        $id = $_POST['input_search_mod'];
+                        $id = mysqli_real_escape_string($db, $_POST['input_search_mod']);
         
                         $query_mod = mysqli_query($db,
                         "UPDATE klienci SET 
@@ -291,6 +287,7 @@
                         }
                     }
                 };
+                mysqli_close($db);
             ?>
                 </form>
             </div>

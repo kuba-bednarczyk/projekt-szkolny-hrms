@@ -158,7 +158,7 @@ body {
   min-height: 500px;
 }
 .form-box__del form {
-  width: 85%;
+  width: 100%;
 }
 .form-box__del form .action-form {
   margin-top: 20px;
@@ -210,6 +210,9 @@ body {
   font-size: 1em;
   font-weight: 500;
 }
+.form-box__del table {
+  margin: 0 auto;
+}
 .form-box__del table, .form-box__del td, .form-box__del th {
   border: 2px solid #1aebb7;
   border-collapse: collapse;
@@ -223,7 +226,7 @@ body {
   align-items: center;
 }
 .form-box__mod form {
-  width: 85%;
+  width: 100%;
 }
 .form-box__mod form .action-form {
   margin-top: 20px;

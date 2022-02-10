@@ -165,7 +165,7 @@ body {
   min-height: 500px;
 }
 .form-box__del form {
-  width: 85%;
+  width: 100%;
 }
 .form-box__del form .action-form {
   margin-top: 20px;
@@ -233,7 +233,7 @@ body {
   align-items: center;
 }
 .form-box__mod form {
-  width: 85%;
+  width: 100%;
 }
 .form-box__mod form .action-form {
   margin-top: 20px;

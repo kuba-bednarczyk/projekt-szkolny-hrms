@@ -107,9 +107,10 @@
                     while($row = mysqli_fetch_array($query_search_all)){
                         echo "<tr>";
                         echo
+                            "<td>".$row['id_spotkania']."</td>".
                             "<td>".$row['id_projektu']."</td>".
                             "<td>".$row['id_klienta']."</td>".
-                            "<td>".$row['data']."</td>";
+                            "<td>".$row['data']."</td>".
                             "<td>".$row['godzina']."</td>".
                             "<td>".$row['status']."</td>";
                         echo "</tr>";

@@ -46,6 +46,7 @@
                     <label>nr_telefonu </label><input type="text" name="nr_telefonu" minlength='9' maxlength='9' required>
                     <label>e-mail </label><input type="text" name="email" required>
                     <label>stanowisko </label><input type="text" name="stanowisko" required>
+
                     <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php

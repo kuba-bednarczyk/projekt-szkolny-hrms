@@ -41,7 +41,7 @@ session_start();
                 <div class="search-box">
                     <form method="POST">
                         <label>Wyszukaj konkretnego klienta (ID):</label>
-                        <input type="number" name="client_input" minlength="1">
+                        <input type="number" name="client_input" min="1">
                         <input type="submit" value="szukaj" name="client_search">
                     </form>
                 </div>
@@ -126,7 +126,7 @@ session_start();
                 <div class="search-box">
                     <form method="POST">
                         <label>Wyszukaj konkrety projekt (ID):</label>
-                        <input type="number" name="project_input" minlength="1">
+                        <input type="number" name="project_input" min="1">
                         <input type="submit" value="szukaj" name="project_search">
                     </form>
                 </div>
