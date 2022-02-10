@@ -44,7 +44,7 @@
                     <label>data</label><input type="date" name="data" required>
                     <label>godzina</label><input type="time" name="godzina" required>
                     <label>status</label><input type="text" name="status" placeholder="bieżący/przyszły/archiwalny" required>
-                    <input type="submit" name="submit" value="dodaj" required>
+                    <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php
                 if(isset($_POST['submit'])){

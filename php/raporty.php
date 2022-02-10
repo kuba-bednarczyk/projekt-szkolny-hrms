@@ -265,7 +265,30 @@ session_start();
                 mysqli_close($conn);
             ?>
             </div> 
+            <div class="report-box uczestnicy" id="uczestnicy">
+                <h1>Uczestnicy spotkania</h1>
+                <table>
+                    <tr>
+                        <td>id_spotkania</td>
+                        <td>id_pracownika</td>
+                    </tr>
+                <?php
+                    $conn = mysqli_connect("localhost", "root", "", "aplikacja_baza");
 
+                    $query = mysqli_query($conn, "SELECT * FROM uczestnicy_spotkania");
+
+                    $query_pracownik = mysqli_query($conn, "SELECT imie, nazwisko FROM pracownicy");
+
+                    while($row = mysqli_fetch_array($query)){
+                        echo "<tr>";
+                        echo
+                            "<td>".$row['id_spotkania']."</td>".
+                            "<td>".$row['id_pracownika']."</td>";
+                        echo "</tr>";
+                    }
+                ?>
+                </table>
+            </div>
         </div>
     </div>
     <script src="../js/menuAnimation.js"></script>

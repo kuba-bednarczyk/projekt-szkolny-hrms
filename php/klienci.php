@@ -45,7 +45,7 @@
                     <label>Miejscowość: </label><input type="text" name="miejscowosc" required>
                     <label>Ulica: </label><input type="text" name="ulica" required>
                     <label>Numer domu: </label><input type="text" name="numer" required>
-                    <input type="submit" name="submit" value="dodaj" required>
+                    <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php
                 if(isset($_POST['submit'])){

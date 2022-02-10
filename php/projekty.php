@@ -44,7 +44,7 @@
                     <label>opis </label><input type="text" name="opis" required placeholder="opis projektu">
                     <label>status </label><input type="text" name="status" required placeholder="bieżący/przyszły/archiwalny">
                     <label>id_klienta</label><input type="number" name="id_klienta" min=0 required placeholder="np. 3">
-                    <input type="submit" name="submit" value="dodaj" required>
+                    <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php
                 if(isset($_POST['submit'])){

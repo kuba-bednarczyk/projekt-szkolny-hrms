@@ -46,7 +46,7 @@
                     <label>nr_telefonu </label><input type="text" name="nr_telefonu" minlength='9' maxlength='9' required>
                     <label>e-mail </label><input type="text" name="email" required>
                     <label>stanowisko </label><input type="text" name="stanowisko" required>
-                    <input type="submit" name="submit" value="dodaj" required>
+                    <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php
                 if(isset($_POST['submit'])){
@@ -304,6 +304,39 @@
                 };
             ?>
                 </form>
+            </div>
+            <div class="form-box form-box__addToMet" id="addToMet">
+                <h1>Dodawanie pracownika do spotkania</h1>
+                <form method="POST">
+                    <div class="search-form-box">
+                        <label>id_spotkania</label>
+                        <input type="number" min="0" name="id_spotkania" required>
+
+                        <label>id_pracownika</label>
+                        <input type="number" min="0" name="id_pracownika" required>
+
+                        <input type="submit" name="submit_addToMet" value="dodaj">
+                    </div>
+                </form>
+                <?php
+                if(isset($_POST['submit_addToMet'])){
+                    $conn = mysqli_connect("localhost", "root", "", "aplikacja_baza");
+
+                    $id_spotkania = $_POST['id_spotkania'];
+                    $id_pracownika = $_POST['id_pracownika'];
+                    
+                    $sql = "INSERT INTO uczestnicy_spotkania VALUES ($id_spotkania,$id_pracownika)";
+                    $query = mysqli_query($conn, $sql);
+
+                    if(mysqli_affected_rows($conn) > 0){
+                        echo "<h3 class='ok'>Dane zostały zapisane w bazie danych!</h3>";
+                    } else {
+                        echo "<h3 class='wrong'>Błąd w zapisie danych do bazy</h3>";
+                    }
+                    
+                    mysqli_close($conn);
+                }   
+            ?>
             </div>
         </div>
     </div>

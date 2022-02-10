@@ -41,7 +41,7 @@
                 <form method="POST">
                     <label>id_projektu</label><input type="number" name="id_projektu" min="0" required>
                     <label>nazwa zespołu</label><input type="text" name="nazwa_zespolu" required>
-                    <input type="submit" name="submit" value="dodaj" required>
+                    <input type="submit" name="submit" value="dodaj">
                 </form>
             <?php
                 if(isset($_POST['submit'])){
